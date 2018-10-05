@@ -1,0 +1,22 @@
+[
+  {
+    "startDate": "2018-10-9",
+    "title": "Just a fun day to post...",
+    "desc": "<div class=\"desc\">This contains <span class=\"bold\">html</span> markup</div>"
+  },
+  {
+    "startDate": "2018-10-18",
+    "title": "Another fun post",
+    "desc": "<div class=\"desc\">This also contains <span class=\"uppercase\">html</span> markup</div>"
+  },
+  {
+    "startDate": "2018-10-29",
+    "title": "Just <span class=\"bold uppercase\">another</span> event",
+    "desc": "This does not contain html markup"
+  },
+  {
+    "startDate": "2018-11-12",
+    "title": "Next month event",
+    "desc": "This does not contain html markup"
+  }
+]

@@ -1,0 +1,30 @@
+.vc-day {
+  min-height: 120px;
+  background: white;
+
+  &.nonMonth {
+    background: lightgray;
+  }
+
+  &.today {
+    background: tan;
+  }
+
+  &.isWeekend {
+    background: lightgoldenrodyellow;
+  }
+
+  &-date {
+    padding: 4px;
+    text-align: right;
+  }
+
+  &-event {
+    padding: 4px;
+    background: lightblue;
+
+    &:not(:last-child) {
+      margin-bottom: 4px;
+    }
+  }
+}
