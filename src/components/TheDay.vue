@@ -22,6 +22,9 @@ export default {
     },
     events: {
       type: Array
+    },
+    highlightWeekends: {
+      type: Boolean
     }
   },
   computed: {
@@ -42,7 +45,9 @@ export default {
       return isSameDay(today, this.date.date)
     },
     isWeekendDay () {
-      return isWeekend(this.date.date)
+      if (this.highlightWeekends) {
+        return isWeekend(this.date.date)
+      }
     }
   }
 }

@@ -23,12 +23,12 @@ export default {
   },
   data () {
     return {
-      monthViewOne: { month: 'current' },
+      monthViewOne: { month: 'current', highlightWeekends: true },
       monthViewTwo: { month: 2, year: 2018 },
-      weekViewOne: { week: 'current', startOn: 0, numberOfWeeks: 2 },
+      weekViewOne: { week: 'current', startOn: 0, numberOfWeeks: 2, highlightWeekends: false },
       weekViewTwo: { week: '2014-9-2', startOn: 2, numberOfWeeks: 1 },
       weekViewThree: { week: 'current', startOn: 'today', numberOfWeeks: 2 },
-      weekViewFour: { week: 'current', startOn: 'today', numberOfWeeks: 1 }
+      weekViewFour: { week: 'current', startOn: 'today', numberOfWeeks: 1, highlightWeekends: true }
     }
   },
   computed: {

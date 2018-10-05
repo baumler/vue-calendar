@@ -20,6 +20,7 @@
           :key="`date-${index}`"
           :date="date"
           :events="getEventsToShow(date.date)"
+          :highlightWeekends="highlightWeekends"
       >
       </the-day>
     </div>
@@ -45,6 +46,9 @@ export default {
     },
     events: {
       type: Array
+    },
+    data: {
+      type: Object
     }
   },
   data () {
@@ -66,6 +70,9 @@ export default {
     },
     numberOdDaysInMonth () {
       return getDaysInMonth(new Date(this.currentYear, this.currentMonth, 1))
+    },
+    highlightWeekends () {
+      return this.data.highlightWeekends
     }
   },
   methods: {

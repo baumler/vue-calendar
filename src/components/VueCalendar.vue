@@ -1,7 +1,7 @@
 <template>
   <div class="vc">
-    <the-month v-if="view === 'month'" :month="currentMonth.month" :year="currentMonth.year" :events="allEvents"></the-month>
-    <the-week v-else-if="view === 'week'" :week="currentWeek" :events="allEvents"></the-week>
+    <the-month v-if="view === 'month'" :month="currentMonth.month" :year="currentMonth.year" :events="allEvents" :data="data"></the-month>
+    <the-week v-else-if="view === 'week'" :week="currentWeek" :events="allEvents" :data="data"></the-week>
   </div>
 </template>
 
