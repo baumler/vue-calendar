@@ -1,21 +1,77 @@
 # vue-calendar
+> Subtitle here
 
-## Project setup
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [Options](#options)
+
+---
+
+##Installation
+
+
+---
+
+## Usage
+In your app, import and add the component
 ```
-npm install
+@import VueCalendar from 'vue-calendar'
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
+```javascript
+components: { VueCalendar }
 ```
 
-### Lints and fixes files
+
+In the html/template
+```html
+<vue-calendar view="month" :events="[]" :data="{}"></vue-calendar>
 ```
-npm run lint
+You must pass all three properties
+
+
+### Properties
+`view` = 'month' or 'week'
+
+`data` = object
+* If month view:
+```json
+{
+  "month": "string or number",
+  "year": "number",
+  "highlightWeekends": "boolean"
+}
 ```
+* If week view:
+```json
+{
+  "week": "string or date",
+  "startOn": "string or number",
+  "numberOfWeeks": "number",
+  "highlightWeekends": "boolean"
+}
+```
+
+`events` = array of objects
+```javascript
+[
+  {
+    "startDate": "YYYY-MM-DD",
+    "title": "string", // what shows on the calendar
+    "url": "string", // optional, if you want to have a popup of more detail
+    "desc": "string" // what is in the detail popup
+  },
+  {...}
+]
+```
+
+
+---
+
+##Options
+#####Month
+
+String = 'current'
+
+Number = month number starting at 0

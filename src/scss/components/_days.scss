@@ -20,11 +20,44 @@
   }
 
   &-event {
-    padding: 4px;
+    position: relative;
     background: lightblue;
 
     &:not(:last-child) {
       margin-bottom: 4px;
+    }
+
+    &-title {
+      padding: 4px;
+    }
+
+    &-desc {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 25vw;
+      max-height: 0;
+      height: 0;
+      z-index: 2;
+      background: red;
+      color: white;
+      transition: all 0.3s;
+      overflow: hidden;
+
+      &.show {
+        max-height: 50vh;
+        height: auto;
+        overflow: auto;
+      }
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color: currentColor;
+
+    &:hover {
+      color: currentColor;
     }
   }
 }

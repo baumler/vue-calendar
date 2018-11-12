@@ -1,10 +1,18 @@
 <template>
   <div :class="['vc-day', {'nonMonth': !date.isMonth}, {'today': isToday}, {'isWeekend': isWeekendDay}]">
     <div class="vc-day-date">{{myDay}}</div>
-    <!--<slot name="events"></slot>-->
+
     <div v-for="(event, index) in myEvents" class="vc-day-event" :key="`e-${index}`">
-      <div class="vc-day-event-title" v-html="event.title"></div>
-      <div class="vc-day-event-desc" v-html="event.desc"></div>
+      <a v-if="event.url" :href="event.url" @mouseover="showTooltip($event)" @mouseout="hideTooltip($event)">
+        <div class="vc-day-event-title" v-html="event.title"></div>
+        <div v-if="event.desc" class="vc-day-event-desc" v-html="event.desc"></div>
+      </a>
+      <div v-else>
+        <div class="vc-day-event-title" v-html="event.title"></div>
+        <div v-if="event.desc" class="vc-day-event-desc">
+          <div v-html="event.desc"></div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -48,6 +56,16 @@ export default {
       if (this.highlightWeekends) {
         return isWeekend(this.date.date)
       }
+    }
+  },
+  methods: {
+    showTooltip (e) {
+      const t = e.target.closest('.vc-day-event')
+      t.querySelector('.vc-day-event-desc').classList.add('show')
+    },
+    hideTooltip (e) {
+      const t = e.target.closest('.vc-day-event')
+      t.querySelector('.vc-day-event-desc').classList.remove('show')
     }
   }
 }
