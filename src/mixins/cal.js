@@ -7,9 +7,14 @@ const cal = {
       monthNamesAbb: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
     }
   },
+  computed: {
+    highlightWeekends () {
+      return this.calData.highlightWeekends
+    }
+  },
   methods: {
     getCurrentMonth () {
-      if (this.data.month === 'current') {
+      if (this.calData.month === 'current') {
         const today = new Date()
         const m = today.getMonth()
         const y = today.getFullYear()
@@ -19,8 +24,8 @@ const cal = {
         }
       } else {
         return {
-          month: (this.data.month * 1),
-          year: this.data.year
+          month: (this.calData.month * 1),
+          year: this.calData.year
         }
       }
     },
@@ -33,10 +38,10 @@ const cal = {
     getEventsToShow (thisDate) {
       const showing = []
 
-      for (let i = 0; i < this.events.length; i++) {
-        const sp = this.splitEventDates(this.events[i].startDate)
+      for (let i = 0; i < this.calData.events.length; i++) {
+        const sp = this.splitEventDates(this.calData.events[i].startDate)
         if (isSameDay(new Date(sp[0], sp[1], sp[2], 0, 0, 0), thisDate)) {
-          showing.push(this.events[i])
+          showing.push(this.calData.events[i])
         }
       }
 

@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <vue-calendar :events="events" :data="monthViewOne"></vue-calendar><br/><br/>
-    <!--<vue-calendar :events="events" :data="monthViewTwo"></vue-calendar><br/><br/>-->
+    <vue-calendar :calData="monthViewOne"></vue-calendar><br/><br/>
+    <!--<vue-calendar :calData="monthViewTwo"></vue-calendar><br/><br/>-->
 
-    <!--<vue-calendar :events="events" :data="weekViewOne"></vue-calendar><br/><br/>-->
-    <!--<vue-calendar :events="events" :data="weekViewTwo"></vue-calendar><br/><br/>-->
-    <vue-calendar :events="events" :data="weekViewThree"></vue-calendar><br/><br/>
-    <vue-calendar :events="events" :data="weekViewFour"></vue-calendar><br/><br/>
+    <!--<vue-calendar :calData="weekViewOne"></vue-calendar><br/><br/>-->
+    <!--<vue-calendar :calData="weekViewTwo"></vue-calendar><br/><br/>-->
+    <vue-calendar :calData="weekViewThree"></vue-calendar><br/><br/>
+    <vue-calendar :calData="weekViewFour"></vue-calendar><br/><br/>
   </div>
 </template>
 
@@ -39,6 +39,14 @@ export default {
       allEvents.push(Birthdays)
       return allEvents
     }
+  },
+  beforeMount () {
+    this.monthViewOne.events = this.events
+    this.monthViewTwo.events = this.events
+    this.weekViewOne.events = this.events
+    this.weekViewTwo.events = this.events
+    this.weekViewThree.events = this.events
+    this.weekViewFour.events = this.events
   }
 }
 </script>

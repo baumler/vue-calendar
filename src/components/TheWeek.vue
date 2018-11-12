@@ -40,10 +40,7 @@ export default {
     week: {
       type: Object
     },
-    events: {
-      type: Array
-    },
-    data: {
+    calData: {
       type: Object
     }
   },
@@ -63,9 +60,6 @@ export default {
       } else {
         return `${this.monthNamesAbb[this.currentMonthStart]} - ${this.monthNamesAbb[this.currentMonthEnd]}`
       }
-    },
-    highlightWeekends () {
-      return this.data.highlightWeekends
     }
   },
   methods: {

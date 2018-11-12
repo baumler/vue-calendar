@@ -36,10 +36,7 @@ import TheDay from './TheDay.vue'
 
 export default {
   props: {
-    events: {
-      type: Array
-    },
-    data: {
+    calData: {
       type: Object
     }
   },
@@ -61,9 +58,6 @@ export default {
     },
     numberOfDaysInMonth () {
       return getDaysInMonth(new Date(this.currentYear, this.currentMonth, 1))
-    },
-    highlightWeekends () {
-      return this.data.highlightWeekends
     }
   },
   methods: {

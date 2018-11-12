@@ -1,7 +1,7 @@
 <template>
   <div class="vc">
-    <the-month v-if="viewType === 'month'" :events="allEvents" :data="data"></the-month>
-    <the-week v-else-if="viewType === 'week'" :week="currentWeek" :events="allEvents" :data="data"></the-week>
+    <the-month v-if="viewType === 'month'" :calData="calData"></the-month>
+    <the-week v-else-if="viewType === 'week'" :week="currentWeek" :calData="calData"></the-week>
   </div>
 </template>
 
@@ -13,12 +13,9 @@ import TheWeek from './TheWeek.vue'
 
 export default {
   props: {
-    data: {
+    calData: {
       type: Object,
       required: true
-    },
-    events: {
-      type: Array
     }
   },
   components: {
@@ -27,21 +24,13 @@ export default {
   },
   computed: {
     viewType () {
-      if (this.data.view) {
-        return this.data.view
+      if (this.calData.view) {
+        return this.calData.view
       }
       return 'month'
     },
-    allEvents () {
-      let arr = []
-
-      for (let i = 0; i < this.events.length; i++) {
-        arr = arr.concat(this.events[i])
-      }
-      return arr
-    },
     currentMonth () {
-      if (this.data.month === 'current') {
+      if (this.calData.month === 'current') {
         const today = new Date()
         const m = today.getMonth()
         const y = today.getFullYear()
@@ -51,22 +40,22 @@ export default {
         }
       } else {
         return {
-          month: (this.data.month * 1),
-          year: this.data.year
+          month: (this.calData.month * 1),
+          year: this.calData.year
         }
       }
     },
     currentWeek () {
-      if (this.data.week === 'current') {
-        if (typeof this.data.startOn === 'number') {
+      if (this.calData.week === 'current') {
+        if (typeof this.calData.startOn === 'number') {
           const today = new Date()
-          const startWeek = startOfWeek(today, { weekStartsOn: this.data.startOn })
+          const startWeek = startOfWeek(today, { weekStartsOn: this.calData.startOn })
 
           return {
             weekOf: today,
             weekStartDate: startWeek,
-            startOn: this.data.startOn,
-            numberOfWeeks: this.data.numberOfWeeks
+            startOn: this.calData.startOn,
+            numberOfWeeks: this.calData.numberOfWeeks
           }
         } else {
           const today = new Date()
@@ -76,20 +65,33 @@ export default {
             weekOf: today,
             weekStartDate: today,
             startOn: startOn,
-            numberOfWeeks: this.data.numberOfWeeks
+            numberOfWeeks: this.calData.numberOfWeeks
           }
         }
       } else {
-        const startWeek = startOfWeek(new Date(this.data.week), { weekStartsOn: this.data.startOn })
+        const startWeek = startOfWeek(new Date(this.calData.week), { weekStartsOn: this.calData.startOn })
 
         return {
-          weekOf: new Date(this.data.week),
+          weekOf: new Date(this.calData.week),
           weekStartDate: startWeek,
-          startOn: this.data.startOn,
-          numberOfWeeks: this.data.numberOfWeeks
+          startOn: this.calData.startOn,
+          numberOfWeeks: this.calData.numberOfWeeks
         }
       }
     }
+  },
+  methods: {
+    allEvents () {
+      let arr = []
+
+      for (let i = 0; i < this.calData.events.length; i++) {
+        arr = arr.concat(this.calData.events[i])
+      }
+      return arr
+    }
+  },
+  beforeMount () {
+    this.calData.events = this.allEvents()
   }
 }
 </script>
