@@ -1,7 +1,7 @@
 <template>
   <div class="vc-week-view">
     <div class="vc-week-header">
-      <div><a class="prev" href="javascript:;" @click="prevNeek">&lt;</a></div>
+      <div><a class="prev" href="javascript:;" @click="prevWeek">&lt;</a></div>
       <div>{{thisMonthNameAbb}}</div>
       <div><a class="next" href="javascript:;" @click="nextWeek">&gt;</a></div>
     </div>
@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import isSameDay from 'date-fns/is_same_day'
+import calMixin from '../mixins/cal'
 import addDays from 'date-fns/add_days'
 import addWeeks from 'date-fns/add_weeks'
 import subWeeks from 'date-fns/sub_weeks'
@@ -49,13 +49,12 @@ export default {
   },
   data () {
     return {
-      monthNamesAbb: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
-      dayNamesAbb: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
       weekDates: [],
       currentMonthStart: 0,
       currentMonthEnd: 0
     }
   },
+  mixins: [ calMixin ],
   components: { TheDay },
   computed: {
     thisMonthNameAbb () {
@@ -104,23 +103,12 @@ export default {
       }
       return newArray
     },
-    getEventsToShow (thisDate) {
-      const showing = []
-
-      for (let i = 0; i < this.events.length; i++) {
-        if (isSameDay(new Date(this.events[i].startDate), thisDate)) {
-          showing.push(this.events[i])
-        }
-      }
-
-      return showing
-    },
     nextWeek () {
       this.week.weekStartDate = addWeeks(this.week.weekStartDate, 1)
       this.week.weekOf = addWeeks(this.week.weekOf, 1)
       this.getDates()
     },
-    prevNeek () {
+    prevWeek () {
       this.week.weekStartDate = subWeeks(this.week.weekStartDate, 1)
       this.week.weekOf = subWeeks(this.week.weekOf, 1)
       this.getDates()

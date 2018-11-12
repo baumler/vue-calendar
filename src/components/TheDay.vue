@@ -2,7 +2,7 @@
   <div :class="['vc-day', {'nonMonth': !date.isMonth}, {'today': isToday}, {'isWeekend': isWeekendDay}]">
     <div class="vc-day-date">{{myDay}}</div>
 
-    <div v-for="(event, index) in myEvents" class="vc-day-event" :key="`e-${index}`">
+    <div v-for="(event, index) in events" class="vc-day-event" :key="`e-${index}`">
       <a v-if="event.url" :href="event.url" @mouseover="showTooltip($event)" @mouseout="hideTooltip($event)">
         <div class="vc-day-event-title" v-html="event.title"></div>
         <div v-if="event.desc" class="vc-day-event-desc" v-html="event.desc"></div>
@@ -38,15 +38,6 @@ export default {
   computed: {
     myDay () {
       return getDate(this.date.date)
-    },
-    myEvents () {
-      const event = []
-      for (let i = 0; i < this.events.length; i++) {
-        if (isSameDay(new Date(this.events[i].startDate), this.date.date)) {
-          event.push(this.events[i])
-        }
-      }
-      return event
     },
     isToday () {
       const today = new Date()

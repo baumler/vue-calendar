@@ -28,22 +28,14 @@
 </template>
 
 <script>
+import calMixin from '../mixins/cal'
 import getDay from 'date-fns/get_day'
 import getDaysInMonth from 'date-fns/get_days_in_month'
-import isSameDay from 'date-fns/is_same_day'
 
 import TheDay from './TheDay.vue'
 
 export default {
   props: {
-    month: {
-      type: Number,
-      required: true
-    },
-    year: {
-      type: Number,
-      required: true
-    },
     events: {
       type: Array
     },
@@ -55,11 +47,10 @@ export default {
     return {
       currentMonth: 0,
       currentYear: 0,
-      dayNamesAbb: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-      monthNamesAbb: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
       monthDates: []
     }
   },
+  mixins: [ calMixin ],
   components: { TheDay },
   computed: {
     thisMonthNameAbb () {
@@ -68,7 +59,7 @@ export default {
     dayOfWeekMonthStartsOn () {
       return getDay(new Date(this.currentYear, this.currentMonth, 1))
     },
-    numberOdDaysInMonth () {
+    numberOfDaysInMonth () {
       return getDaysInMonth(new Date(this.currentYear, this.currentMonth, 1))
     },
     highlightWeekends () {
@@ -80,7 +71,7 @@ export default {
       this.monthDates = []
 
       // get the actual month dates
-      for (let i = 1; i <= this.numberOdDaysInMonth; i++) {
+      for (let i = 1; i <= this.numberOfDaysInMonth; i++) {
         this.monthDates.push({ date: new Date(this.currentYear, this.currentMonth, i), isMonth: true })
       }
 
@@ -94,7 +85,7 @@ export default {
         }
       }
       // get dates in last week next month
-      const dayEndOfThisMonth = getDay(new Date(this.currentYear, this.currentMonth, this.numberOdDaysInMonth))
+      const dayEndOfThisMonth = getDay(new Date(this.currentYear, this.currentMonth, this.numberOfDaysInMonth))
       if (dayEndOfThisMonth < 7) {
         const yearForNext = this.currentMonth !== 11 ? this.currentYear : this.currentYear + 1
         const monthForNext = this.currentMonth !== 11 ? this.currentMonth + 1 : 0
@@ -102,17 +93,6 @@ export default {
           this.monthDates.push({ date: new Date(yearForNext, monthForNext, i), isMonth: false })
         }
       }
-    },
-    getEventsToShow (thisDate) {
-      const showing = []
-
-      for (let i = 0; i < this.events.length; i++) {
-        if (isSameDay(new Date(this.events[i].startDate), thisDate)) {
-          showing.push(this.events[i])
-        }
-      }
-
-      return showing
     },
     nextMonth () {
       if (this.currentMonth === 11) {
@@ -134,8 +114,8 @@ export default {
     }
   },
   mounted () {
-    this.currentMonth = this.month - 1
-    this.currentYear = this.year
+    this.currentMonth = this.getCurrentMonth().month - 1
+    this.currentYear = this.getCurrentMonth().year
     this.getDates()
   }
 }

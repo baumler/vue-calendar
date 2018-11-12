@@ -74,4 +74,4 @@ You must pass all three properties
 
 String = 'current'
 
-Number = month number starting at 0
+Number = month number Jan = 1

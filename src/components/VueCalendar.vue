@@ -1,7 +1,7 @@
 <template>
   <div class="vc">
-    <the-month v-if="view === 'month'" :month="currentMonth.month" :year="currentMonth.year" :events="allEvents" :data="data"></the-month>
-    <the-week v-else-if="view === 'week'" :week="currentWeek" :events="allEvents" :data="data"></the-week>
+    <the-month v-if="viewType === 'month'" :events="allEvents" :data="data"></the-month>
+    <the-week v-else-if="viewType === 'week'" :week="currentWeek" :events="allEvents" :data="data"></the-week>
   </div>
 </template>
 
@@ -13,17 +13,12 @@ import TheWeek from './TheWeek.vue'
 
 export default {
   props: {
-    events: {
-      type: Array
-    },
-    view: {
-      type: String,
-      required: true,
-      default: 'month'
-    },
     data: {
       type: Object,
       required: true
+    },
+    events: {
+      type: Array
     }
   },
   components: {
@@ -31,6 +26,12 @@ export default {
     TheWeek
   },
   computed: {
+    viewType () {
+      if (this.data.view) {
+        return this.data.view
+      }
+      return 'month'
+    },
     allEvents () {
       let arr = []
 
@@ -50,7 +51,7 @@ export default {
         }
       } else {
         return {
-          month: this.data.month,
+          month: (this.data.month * 1),
           year: this.data.year
         }
       }
