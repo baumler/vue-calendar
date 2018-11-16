@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import 'tippy.js/dist/tippy.css'
 import startOfWeek from 'date-fns/start_of_week'
 
 import TheMonth from './TheMonth.vue'

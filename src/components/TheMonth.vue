@@ -20,7 +20,8 @@
           :key="`date-${index}`"
           :date="date"
           :events="getEventsToShow(date.date)"
-          :highlightWeekends="highlightWeekends"
+          :highlight-weekends="highlightWeekends"
+          :tip-theme="tipTheme"
       >
       </the-day>
     </div>

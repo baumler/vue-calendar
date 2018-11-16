@@ -1,0 +1,74 @@
+.tippy-tooltip.did-theme {
+  padding: 0.5rem;
+}
+
+.tippy-tooltip.did-theme .tippy-backdrop {}
+
+.tippy-tooltip.did-theme .tippy-arrow {}
+
+.tippy-tooltip.did-theme .tippy-content {
+  text-align: left;
+}
+
+.tip-title {
+  padding: 0 0.5rem 0.5rem 0.5rem;
+  font-size: large;
+  text-transform: uppercase;
+  border-bottom: 2px solid white;
+}
+
+.tip-content {
+  padding: 0.5rem 0.5rem 0 0.5rem;
+}
+
+.raid--desc {
+  margin: 0 0 6px 0;
+  font-style: italic;
+  line-height: 1.3;
+}
+
+.table {
+  display: table;
+}
+
+.table_row {
+  display: table-row;
+}
+
+.table_cell {
+  display: table-cell;
+}
+
+.raid .table {
+  width: calc(100% - 20px);
+  margin: 10px auto;
+}
+
+.table_hd_grp {
+  display: table-header-group;
+  font-weight: 700;
+}
+
+.table_hd_grp .table_cell {
+  border-bottom: 2px solid #4F6373;
+}
+
+raid .full .raid--role,
+.raid .full .needed,
+.raid .full .confirmed,
+.raid .full .available {
+  color: #6f6f6f;
+  font-weight: normal;
+}
+
+.raid .need-more .raid--role,
+.raid .need-more .confirmed {
+  color: #8A0917;
+  font-weight: 700;
+}
+
+.raid .needed,
+.raid .confirmed,
+.raid .available {
+  text-align: center;
+}

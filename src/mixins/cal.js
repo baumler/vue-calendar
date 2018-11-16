@@ -10,6 +10,9 @@ const cal = {
   computed: {
     highlightWeekends () {
       return this.calData.highlightWeekends
+    },
+    tipTheme () {
+      return this.calData.tiptheme ? this.calData.tiptheme : ''
     }
   },
   methods: {

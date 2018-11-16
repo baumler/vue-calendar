@@ -24,7 +24,7 @@ export default {
   },
   data () {
     return {
-      monthViewOne: { view: 'month', month: 'current', highlightWeekends: true },
+      monthViewOne: { view: 'month', month: 'current', highlightWeekends: true, tiptheme: 'did' },
       monthViewTwo: { view: 'month', month: 5, year: 2018 },
       weekViewOne: { view: 'week', week: 'current', startOn: 0, numberOfWeeks: 2, highlightWeekends: false },
       weekViewTwo: { view: 'week', week: '2014-6-6', startOn: 2, numberOfWeeks: 1 },
@@ -50,3 +50,7 @@ export default {
   }
 }
 </script>
+
+<style>
+  @import '../public/theme.css';
+</style>
