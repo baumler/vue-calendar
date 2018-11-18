@@ -2,16 +2,19 @@
   min-height: 120px;
   background: white;
 
+  &.isWeekend {
+    background: lightgoldenrodyellow;
+  }
+
   &.nonMonth {
-    background: lightgray;
+    // color: white;
+    // background: gray;
+    color: grey;
+    background: #e3e3e3;
   }
 
   &.today {
     background: tan;
-  }
-
-  &.isWeekend {
-    background: lightgoldenrodyellow;
   }
 
   &-date {
@@ -21,7 +24,7 @@
 
   &-event {
     position: relative;
-    background: lightblue;
+    background: lightgrey;
 
     &:not(:last-child) {
       margin-bottom: 4px;
@@ -29,6 +32,10 @@
 
     &-title {
       padding: 4px;
+
+      * {
+        width: 100%;
+      }
     }
 
     &-desc {

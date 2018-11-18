@@ -11,8 +11,8 @@ const cal = {
     highlightWeekends () {
       return this.calData.highlightWeekends
     },
-    tipTheme () {
-      return this.calData.tiptheme ? this.calData.tiptheme : ''
+    tipOptions () {
+      return this.calData.tipOptions ? this.calData.tipOptions : {}
     }
   },
   methods: {

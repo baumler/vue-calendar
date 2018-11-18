@@ -21,7 +21,7 @@
           :date="date"
           :events="getEventsToShow(date.date)"
           :highlight-weekends="highlightWeekends"
-          :tip-theme="tipTheme"
+          :tip-options="tipOptions"
       >
       </the-day>
     </div>

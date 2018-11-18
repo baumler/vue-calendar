@@ -18,20 +18,16 @@ export default {
       type: Object,
       required: true
     },
-    tipTheme: {
-      type: String
+    tipOptions: {
+      type: Object
     }
   },
   mounted () {
     if (this.event.desc) {
+      const opts = this.tipOptions
       tippy(`.js-tip-${this.event.id}`, {
-        content: this.event.desc,
-        arrow: true,
-        arrowType: 'round',
-        size: 'large',
-        a11y: true,
-        theme: `dark ${this.tipTheme}`,
-        trigger: 'click'
+        ...opts,
+        content: this.event.desc
       })
     }
   }

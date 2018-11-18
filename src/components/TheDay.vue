@@ -3,7 +3,7 @@
     <div class="vc-day-date">{{myDay}}</div>
 
     <div v-for="(event, index) in events" class="vc-day-event" :key="`e-${index}`">
-      <the-event :event="event" :tip-theme="tipTheme"></the-event>
+      <the-event :event="event" :tip-options="tipOptions"></the-event>
     </div>
   </div>
 </template>
@@ -26,8 +26,8 @@ export default {
     highlightWeekends: {
       type: Boolean
     },
-    tipTheme: {
-      type: String
+    tipOptions: {
+      type: Object
     }
   },
   components: { TheEvent },

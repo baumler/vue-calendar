@@ -1,24 +1,34 @@
 .tippy-tooltip.did-theme {
-  padding: 0.5rem;
+  padding: 0;
+  background-color: #e8dfcb;
+  border: 2px solid black;
+  color: black;
 }
 
 .tippy-tooltip.did-theme .tippy-backdrop {}
 
-.tippy-tooltip.did-theme .tippy-arrow {}
+.tippy-tooltip.did-theme .tippy-arrow,
+.tippy-tooltip.did-theme .tippy-roundarrow {
+  fill: black;
+}
 
 .tippy-tooltip.did-theme .tippy-content {
   text-align: left;
 }
 
 .tip-title {
-  padding: 0 0.5rem 0.5rem 0.5rem;
+  padding: 0.5rem;
   font-size: large;
+  font-weight: 600;
   text-transform: uppercase;
-  border-bottom: 2px solid white;
+  border-bottom: 2px solid black;
+  background-color: green;
+  color: white;
 }
 
 .tip-content {
-  padding: 0.5rem 0.5rem 0 0.5rem;
+  padding: 0.5rem;
+  font-size: 0.85rem;
 }
 
 .raid--desc {
@@ -50,10 +60,15 @@
 }
 
 .table_hd_grp .table_cell {
+  padding: 0 4px;
   border-bottom: 2px solid #4F6373;
 }
 
-raid .full .raid--role,
+.table.raid--roles .table_row .table_cell {
+  padding-bottom: 4px;
+}
+
+.raid .full .raid--role,
 .raid .full .needed,
 .raid .full .confirmed,
 .raid .full .available {
@@ -71,4 +86,16 @@ raid .full .raid--role,
 .raid .confirmed,
 .raid .available {
   text-align: center;
+}
+
+.table_ft_grp {
+  display: table-footer-group;
+}
+
+.table_ft_grp .table_cell {
+  padding-top: 1rem;
+}
+
+.desc {
+  padding: 0.5rem;
 }
