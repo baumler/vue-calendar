@@ -64,7 +64,7 @@ export default {
   components: { TheDay },
   computed: {
     thisMonthNameAbb () {
-      let title = '';
+      let title = ''
       if (this.currentMonthStart === this.currentMonthEnd) {
         title = this.monthNamesAbb[this.currentMonthStart]
         if (this.calData.header.showYear) {

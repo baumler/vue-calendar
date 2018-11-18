@@ -18,7 +18,6 @@
     arrow: true,
     arrowType: 'round',
     size: 'large',
-    a11y: true,
     theme: `dark custom`,
     interactive: true,
     arrowTransform: 'scale(1.2)'

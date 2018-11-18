@@ -1,34 +1,81 @@
 # vue-calendar
-> Subtitle here
+> A calendar template for single day events in Vue 2<br/>
+> Uses [tippy.js](https://atomiks.github.io/tippyjs/) for tooltip popups
 
 ## Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
-- [Options](#options)
+- [Options in Detail](#options-in-detail)
+- [Cutomize the Theme](#customize-the-theme)
 
 ---
 
 ##Installation
+```
+npm install --save vue-calendar
+```
 
-
----
+In your app, import and add the component
+```vue
+@import VueCalendar from 'vue-calendar'
+export default {
+  components: { VueCalendar }
+}
+```
 
 ## Usage
-In your app, import and add the component
+Pass an object through the props
+```vue
+<vue-calendar :calData="calendarData"></vue-calendar>
+...
+<script>
+export default {
+  data () {
+    return {
+      calendarData: {
+        view: 'month',
+        month: 'current',
+        highlightWeekends: true,
+        header: {
+          show: true,
+          showYear: true,
+          showArrows: true,
+          prev: 'svg code',
+          next: 'svg code'
+        },
+        tipOptions: {
+          arrow: true,
+          arrowType: 'round',
+          size: 'large',
+          a11y: true,
+          theme: `dark custom`,
+          interactive: true,
+          arrowTransform: 'scale(1.2)'
+        },
+        events: [
+          {
+            "id": 2,
+            "startDate": "2018-11-9",
+            "title": "Just a fun day to post",
+            "url": "http://someplacewarm.com",
+            "desc": "This contains <span class=\"bold\">html</span> markup"
+          },
+          {
+            "id": 4,
+            "startDate": "2018-11-18",
+            "title": "Another fun post",
+            "url": "",
+            "desc": "<div class=\"desc\">This also contains <span class=\"uppercase\">html</span> markup</div>"
+          }
+        ]
+      }
+    }
+  },
+  ...
+}
+</script>
 ```
-@import VueCalendar from 'vue-calendar'
-```
-
-```javascript
-components: { VueCalendar }
-```
-
-
-In the html/template
-```html
-<vue-calendar view="month" :events="[]" :data="{}"></vue-calendar>
-```
-You must pass all three properties
+You can pass any custom tippy options through `tipOptions`. See [tippy.js](https://atomiks.github.io/tippyjs/) for more options.
 
 
 ### Properties
@@ -69,9 +116,57 @@ You must pass all three properties
 
 ---
 
-##Options
-#####Month
+##Options In Detail
+#####Basic
+\* = required option
 
-String = 'current'
+| Option              | Type    | Default | Detail                                                              |
+| ------------------- | ------- | ------- | ------------------------------------------------------------------- |
+| `view`*             | String  | 'month' | 'month' or 'week'                                                   |
+| `highlightWeekends` | Boolean | true    | changes the background color of weekend days                        |
+| `header`            | Object  |         | see [Header Options](#header-options)                               |
+| `events`*           | Array   |         | see [Events](#events)                                               |
+| `tipOptions`        | Object  |         | see [tippy.js](https://atomiks.github.io/tippyjs/) for more options |
 
-Number = month number Jan = 1
+
+#####Month Specific Options
+
+| Option  | Type          | Default   | Detail                                     |
+| ------- | ------------- | --------- | ------------------------------------------ |
+| `month` | String/Number | 'current' | can also be the month number               |
+| `year`  | Number        |           | used if month/week is not set to 'current' |
+
+#####Week Specific Options
+
+| Option  | Type          | Default   | Detail                                     |
+| ------- | ------------- | --------- | ------------------------------------------ |
+| `week`  | String/Number | 'current' | can also be the month number               |
+| `year`  | Number        |           | used if month/week is not set to 'current' |
+
+####Header Options
+
+| SubOption    | Type    | Default | Detail                                                            |
+| ------------ | ------- | ------- | ----------------------------------------------------------------- |
+| `show`       | Boolean | true    | toggle the full header                                            |
+| `showYear`   | Boolean | true    | toggle showing the year                                           |
+| `showArrows` | Boolean | true    | toggle showing the prev/next arrows                               |
+| `prev`       | String  | '<'     | include text or html for what shows for the prev arrow (max 30px) |
+| `next`       | String  | '>'     | include text or html for what shows for the next arrow (max 30px) |
+
+####Events
+\* = required option
+
+| SubOption     | Type    | Detail                                      |
+| ------------- | ------- | ------------------------------------------- |
+| `id`*         | Number  | event id                                    |
+| `starteDate`* | String  | event start date (YYYY-MM-DD)               |
+| `title`*      | String  | event title (what displays on the calendar) |
+| `url`         | String  | event link to a different page              |
+| `desc`        | String  | displayed in the tooltip                    |
+
+---
+
+##Customize The Theme
+
+
+---
