@@ -126,6 +126,7 @@ import VueCalendar from './components/VueCalendar.vue'
 // test date
 import Events from './data/events'
 import Birthdays from './data/birthdays'
+import Holidays from './data/holidays'
 
 export default {
   name: 'app',
@@ -144,6 +145,7 @@ export default {
         arrowTransform: 'scale(1.2)'
       },
       events: [
+        Holidays,
         Events,
         Birthdays
       ],
