@@ -1,19 +1,12 @@
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+.vc {
+  font-family: 'Kodchasan', 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  line-height: 1.4;
   color: $text;
 
   * {
     box-sizing: border-box;
   }
-}
-
-.bold {
-  font-weight: bold;
-}
-
-.uppercase {
-  text-transform: uppercase;
 }

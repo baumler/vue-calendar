@@ -98,5 +98,6 @@ export default {
 </script>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css?family=Kodchasan:400,700');
 @import '../scss/main';
 </style>

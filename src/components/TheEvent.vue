@@ -24,10 +24,9 @@ export default {
   },
   mounted () {
     if (this.event.desc) {
-      const opts = this.tipOptions
       tippy(`.js-tip-${this.event.id}`, {
-        ...opts,
-        content: this.event.desc
+        content: this.event.desc,
+        ...this.tipOptions
       })
     }
   }

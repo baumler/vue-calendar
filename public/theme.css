@@ -99,3 +99,11 @@
 .desc {
   padding: 0.5rem;
 }
+
+.bold {
+  font-weight: bold;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}

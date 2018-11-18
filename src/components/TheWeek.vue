@@ -1,16 +1,22 @@
 <template>
-  <div class="vc-week-view">
-    <div class="vc-week-header">
-      <div><a class="prev" href="javascript:;" @click="prevWeek">&lt;</a></div>
-      <div>{{thisMonthNameAbb}}</div>
-      <div><a class="next" href="javascript:;" @click="nextWeek">&gt;</a></div>
+  <div class="vc-view">
+    <div v-if="calData.showHeader" class="vc-view-header">
+      <a v-if="calData.prevNext.show" class="prev" href="javascript:;" @click="prevWeek">
+        <span class="icon" v-html="calData.prevNext.prev ? calData.prevNext.prev : '<<'"></span>
+      </a>
+
+      <div class="title">{{thisMonthNameAbb}}</div>
+
+      <a v-if="calData.prevNext.show" class="next" href="javascript:;" @click="nextWeek">
+        <span class="icon" v-html="calData.prevNext.next ? calData.prevNext.next : '>>'"></span>
+      </a>
     </div>
 
-    <div class="vc-month-container">
+    <div class="vc-view-container">
       <div
           v-for="(day, index) in dayNamesAbb"
           :key="`name-${index}`"
-          class="vc-week-day-header"
+          class="vc-view-day-header"
       >
         {{day}}
       </div>
