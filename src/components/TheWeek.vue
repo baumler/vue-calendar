@@ -1,14 +1,14 @@
 <template>
   <div class="vc-view">
-    <div v-if="calData.showHeader" class="vc-view-header">
-      <a v-if="calData.prevNext.show" class="prev" href="javascript:;" @click="prevWeek">
-        <span class="icon" v-html="calData.prevNext.prev ? calData.prevNext.prev : '<<'"></span>
+    <div v-if="calData.header" class="vc-view-header">
+      <a v-if="calData.header.showArrows" class="prev" href="javascript:;" @click="prevWeek">
+        <span class="icon" v-html="calData.header.prev ? calData.header.prev : '<<'"></span>
       </a>
 
       <div class="title">{{thisMonthNameAbb}}</div>
 
-      <a v-if="calData.prevNext.show" class="next" href="javascript:;" @click="nextWeek">
-        <span class="icon" v-html="calData.prevNext.next ? calData.prevNext.next : '>>'"></span>
+      <a v-if="calData.header.showArrows" class="next" href="javascript:;" @click="nextWeek">
+        <span class="icon" v-html="calData.header.next ? calData.header.next : '>>'"></span>
       </a>
     </div>
 
@@ -55,18 +55,29 @@ export default {
     return {
       weekDates: [],
       currentMonthStart: 0,
-      currentMonthEnd: 0
+      currentMonthEnd: 0,
+      currentYearStart: 0,
+      currentYearEnd: 0
     }
   },
   mixins: [ calMixin ],
   components: { TheDay },
   computed: {
     thisMonthNameAbb () {
+      let title = '';
       if (this.currentMonthStart === this.currentMonthEnd) {
-        return this.monthNamesAbb[this.currentMonthStart]
+        title = this.monthNamesAbb[this.currentMonthStart]
+        if (this.calData.header.showYear) {
+          title += ` ${this.currentYearStart}`
+        }
       } else {
-        return `${this.monthNamesAbb[this.currentMonthStart]} - ${this.monthNamesAbb[this.currentMonthEnd]}`
+        if (this.calData.header.showYear) {
+          title = `${this.monthNamesAbb[this.currentMonthStart]} ${this.currentYearStart} - ${this.monthNamesAbb[this.currentMonthEnd]} ${this.currentYearEnd}`
+        } else {
+          title = `${this.monthNamesAbb[this.currentMonthStart]} - ${this.monthNamesAbb[this.currentMonthEnd]}`
+        }
       }
+      return title
     }
   },
   methods: {
@@ -74,6 +85,8 @@ export default {
       this.currentMonthStart = (this.week.weekStartDate).getMonth()
       this.currentMonthEnd = (addDays(this.week.weekStartDate, this.week.numberOfWeeks * 7)).getMonth()
       this.weekDates = []
+      this.currentYearStart = (this.week.weekStartDate).getFullYear()
+      this.currentYearEnd = (addDays(this.week.weekStartDate, this.week.numberOfWeeks * 7)).getFullYear()
 
       this.weekDates.push({ date: this.week.weekStartDate, isMonth: true })
       for (let i = 1; i < (this.week.numberOfWeeks * 7); i++) {

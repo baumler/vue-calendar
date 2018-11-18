@@ -1,18 +1,44 @@
-.tippy-tooltip.did-theme {
+#app {
+  font-family: 'Kodchasan', 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.4;
+  color: #000;
+}
+
+h2 {
+  margin-bottom: 0;
+  font-size: 2rem;
+  border-bottom: 1px solid grey;
+}
+
+pre {
+  min-width: 250px;
+  padding: 1rem;
+  margin: 1rem 1rem 0 0;
+  background: lightgrey;
+}
+
+.flex {
+  display: flex;
+}
+
+/* Tippy theme */
+.tippy-tooltip.custom-theme {
   padding: 0;
   background-color: #e8dfcb;
   border: 2px solid black;
   color: black;
 }
 
-.tippy-tooltip.did-theme .tippy-backdrop {}
+.tippy-tooltip.custom-theme .tippy-backdrop {}
 
-.tippy-tooltip.did-theme .tippy-arrow,
-.tippy-tooltip.did-theme .tippy-roundarrow {
+.tippy-tooltip.custom-theme .tippy-arrow,
+.tippy-tooltip.custom-theme .tippy-roundarrow {
   fill: black;
 }
 
-.tippy-tooltip.did-theme .tippy-content {
+.tippy-tooltip.custom-theme .tippy-content {
   text-align: left;
 }
 

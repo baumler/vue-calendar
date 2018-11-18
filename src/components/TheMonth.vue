@@ -1,14 +1,15 @@
 <template>
   <div class="vc-view">
-    <div v-if="calData.showHeader" class="vc-view-header">
-      <a v-if="calData.prevNext.show" class="prev" href="javascript:;" @click="prevMonth">
-        <span class="icon" v-html="calData.prevNext.prev ? calData.prevNext.prev : '<<'"></span>
+    <div v-if="calData.header.show" class="vc-view-header">
+      <a v-if="calData.header.showArrows" class="prev" href="javascript:;" @click="prevMonth">
+        <span class="icon" v-html="calData.header.prev ? calData.header.prev : '<<'"></span>
       </a>
 
-      <div class="title">{{thisMonthNameAbb}} {{currentYear}}</div>
+      <div v-if="calData.header.showYear" class="title">{{thisMonthNameAbb}} {{currentYear}}</div>
+      <div v-else class="title">{{thisMonthNameAbb}}</div>
 
-      <a v-if="calData.prevNext.show" class="next" href="javascript:;" @click="nextMonth">
-        <span class="icon" v-html="calData.prevNext.next ? calData.prevNext.next : '>>'"></span>
+      <a v-if="calData.header.showArrows" class="next" href="javascript:;" @click="nextMonth">
+        <span class="icon" v-html="calData.header.next ? calData.header.next : '>>'"></span>
       </a>
     </div>
 

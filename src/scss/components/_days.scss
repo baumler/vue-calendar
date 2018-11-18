@@ -1,18 +1,19 @@
 .vc-day {
   min-height: 120px;
-  background: white;
+  color: $day-text;
+  background: $day-bg;
 
   &.isWeekend {
-    background: lightgoldenrodyellow;
+    background: $weekend-bg;
   }
 
   &.nonMonth {
-    color: grey;
-    background: #e3e3e3;
+    color: $non-month-text;
+    background: $non-month-bg;
   }
 
   &.today {
-    background: tan;
+    background: $today-bg;
   }
 
   &-date {
@@ -22,7 +23,7 @@
 
   &-event {
     position: relative;
-    background: lightgrey;
+    background: $event-bg;
 
     &:not(:last-child) {
       margin-bottom: 4px;
@@ -37,23 +38,7 @@
     }
 
     &-desc {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 25vw;
-      max-height: 0;
-      height: 0;
-      z-index: 2;
-      background: red;
-      color: white;
-      transition: all 0.3s;
-      overflow: hidden;
-
-      &.show {
-        max-height: 50vh;
-        height: auto;
-        overflow: auto;
-      }
+      display: none;
     }
   }
 

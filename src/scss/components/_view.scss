@@ -1,6 +1,4 @@
 .vc-view {
-  width: 100%;
-
   &-header {
     position: relative;
     display: flex;
@@ -55,7 +53,7 @@
     background: white;
 
     &.isWeekend {
-      background: lightgoldenrodyellow;
+      background: $weekend-bg;
     }
   }
 }
