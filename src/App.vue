@@ -123,7 +123,6 @@
 <script>
 import VueCalendar from './components/VueCalendar.vue'
 
-// test date
 import Events from './data/events'
 import Birthdays from './data/birthdays'
 import Holidays from './data/holidays'
