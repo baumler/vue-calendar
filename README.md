@@ -3,25 +3,11 @@
 > Uses [tippy.js](https://atomiks.github.io/tippyjs/) for tooltip popups
 
 ## Table of Contents
-- [Installation](#installation)
 - [Usage](#usage)
 - [Options in Detail](#options-in-detail)
 - [Cutomize the Theme](#customize-the-theme)
 
 ---
-
-##Installation
-```
-npm install --save vue-calendar
-```
-
-In your app, import and add the component
-```vue
-@import VueCalendar from 'vue-calendar'
-export default {
-  components: { VueCalendar }
-}
-```
 
 ## Usage
 Pass an object through the props
